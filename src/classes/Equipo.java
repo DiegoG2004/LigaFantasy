@@ -1,6 +1,8 @@
 package classes;
 
 public class Equipo {
-String Nombre;
-boolean UsadoEnJornada;
+public int puntos, golesFavor, golesContra;
+	
+public String Nombre;
+public boolean UsadoEnJornada;
 }
