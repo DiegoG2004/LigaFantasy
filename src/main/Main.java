@@ -1,10 +1,13 @@
 package main;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import classes.*;
 
 public class Main {
 
-	public static void main(String[] args) {
-		Equipo UDAlmeria = new Equipo();
+	public static void main(String[] args) throws IOException {
+		/*Equipo UDAlmeria = new Equipo();
 		UDAlmeria.Nombre = "UD Almeria";
 		Equipo RayoVallecano = new Equipo();
 		RayoVallecano.Nombre = "Rayo Vallecano";
@@ -43,11 +46,31 @@ public class Main {
 		Equipo AtleticoDeMadrid = new Equipo();
 		AtleticoDeMadrid.Nombre = "Atletico de Madrid";
 		Equipo GranadaCF = new Equipo();
-		GranadaCF.Nombre = "Granada CF";
+		GranadaCF.Nombre = "Granada CF";*/
 		
 		//NO ESTOY SEGURO SI SE HACE ASI O LO TIENE QUE PONER EL USUARIO PERO LO DEJO QUE ME HA LLEVADO UN BUEN RATO
 		
+		//Esta linea solo es para poder leer inputs del usuario
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		boolean salir = false;
 		
+		TablaDispersa tablaEquipos = new TablaDispersa();
+		
+		while(salir == false) {
+			System.out.println("1. Añadir equipo");
+			System.out.println("2. Simulacion");
+			int opcion = br.read();
+			switch(opcion) {
+			case 1:
+				if(tablaEquipos.numElementos <= 21) {
+					System.out.println("Nombre del equipo: ");
+					String nombre = br.readLine();
+					Equipo Equipo = new Equipo();
+					Equipo.Nombre = nombre;
+					tablaEquipos.insertar(Equipo);
+				} else System.out.println("Hay demasiados equipos");
+				
+			}
+		}
 	}
-
 }

@@ -1,7 +1,7 @@
 package classes;
 
 public class Partido {
- Equipo EqIzquierdo;
- Equipo EqDerecho;
- boolean YaUsado;
+	Equipo EqIzquierdo;
+	Equipo EqDerecho;
+	boolean YaUsado;
 }

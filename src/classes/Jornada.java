@@ -1,6 +1,6 @@
 package classes;
 
 public class Jornada {
- int NumPartidos;
- Partido[] Partidos;
+	int NumPartidos;
+	Partido[] Partidos;
 }
