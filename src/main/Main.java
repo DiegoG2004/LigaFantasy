@@ -7,7 +7,7 @@ import classes.*;
 public class Main {
 
 	public static void main(String[] args) throws IOException {
-		/*Equipo UDAlmeria = new Equipo();
+		Equipo UDAlmeria = new Equipo();
 		UDAlmeria.Nombre = "UD Almeria";
 		Equipo RayoVallecano = new Equipo();
 		RayoVallecano.Nombre = "Rayo Vallecano";
@@ -46,7 +46,7 @@ public class Main {
 		Equipo AtleticoDeMadrid = new Equipo();
 		AtleticoDeMadrid.Nombre = "Atletico de Madrid";
 		Equipo GranadaCF = new Equipo();
-		GranadaCF.Nombre = "Granada CF";*/
+		GranadaCF.Nombre = "Granada CF";
 		
 		//NO ESTOY SEGURO SI SE HACE ASI O LO TIENE QUE PONER EL USUARIO PERO LO DEJO QUE ME HA LLEVADO UN BUEN RATO
 		
@@ -55,7 +55,14 @@ public class Main {
 		boolean salir = false;
 		
 		TablaDispersa tablaEquipos = new TablaDispersa();
-		
+		//Añadir equipos del sistema a la tabla
+		//no se si esta bien 
+		for (int i=0;i<21;i++)
+		{
+		    Equipo nuevoEquipo = new Equipo();
+		    nuevoEquipo.Nombre = "Equipo " + (i + 1);
+		    tablaEquipos.insertar(nuevoEquipo);
+		}
 		while(salir == false) {
 			System.out.println("1. Añadir equipo");
 			System.out.println("2. Simulacion");
