@@ -2,7 +2,7 @@ package classes;
 
 public class TablaDispersa {
 
-	static final int TAMTABLA=21;
+	static final int TAMTABLA= 21;
 	public int numElementos;
 	private double factorCarga;
 	private Equipo[] tabla;
@@ -49,10 +49,17 @@ public class TablaDispersa {
 	public void insertar(Equipo r)
 	{
 		int posicion=hash(r.getCodigo());
+		
+		if (buscar(r.getCodigo())==r && tabla[posicion].esAlta ==true)
+		{
+			System.err.println("Ese equipo ya ha sido insertado");
+			return;
+		}
 		tabla[posicion]=r;
 		numElementos++;
 		factorCarga=(double)(numElementos)/TAMTABLA;
-		if(factorCarga>0.8) System.out.println("\n#### EL FACTOR DE CARGA SUPERA EL 80%, conviene aumentar el tama�o");
+		if(factorCarga>0.8) 
+		System.out.println("\n#### EL FACTOR DE CARGA SUPERA EL 80%, conviene aumentar el tamanyo");
 		
 	}
 	
@@ -67,9 +74,8 @@ public class TablaDispersa {
 	public void eliminar(String clave)
 	{
 		int posicion=hash(clave);
-		/*if(tabla[posicion]!=null)
-		tabla[posicion].esAlta=false;*/
-		//ESTO LO COMENTO PORQUE NO SE MUY BIEN COMO FUNCIONA
+		if(tabla[posicion]!=null)
+		tabla[posicion].esAlta=false;
 		
 	}
 }
