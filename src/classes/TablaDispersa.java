@@ -53,7 +53,7 @@ public class TablaDispersa {
 		if (buscar(r.getCodigo())==r && tabla[posicion].esAlta ==true)
 		{
 			System.err.println("Ese equipo ya ha sido insertado");
-			return;
+			return;	
 		}
 		tabla[posicion]=r;
 		numElementos++;
@@ -64,7 +64,7 @@ public class TablaDispersa {
 	}
 	
 	public Equipo buscar(String clave)
-	{
+	{	
 		
 		int posicion=hash(clave);
 		Equipo pr=tabla[posicion];

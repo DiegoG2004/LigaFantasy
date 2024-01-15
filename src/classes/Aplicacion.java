@@ -74,15 +74,39 @@ public void CrearEquipo() throws IOException
 }
 public void DarPuntos() throws IOException
 {
-	
+	System.out.println("Nombre del equipo: ");
+	String nombre = br.readLine();
+	System.out.println("\nCantidad de puntos: ");
+	String entrada = br.readLine();
+	int puntos = Integer.parseInt(entrada);
+	if(tablaEquipos.buscar(nombre).puntos += puntos <=3)
+	{
+		tablaEquipos.buscar(nombre).puntos += puntos;
+	} else System.out.println("Este equipo tiene demasiados puntos");
 }
 public void DarGolesFavor() throws IOException
 {
-	
+	System.out.println("Nombre del equipo: ");
+	String nombre = br.readLine();
+	if(tablaEquipos.buscar(nombre) != null) //Esto no lo tengo muy claro
+	{
+		System.out.println("\nCantidad de goles a favor: ");
+		String entrada = br.readLine();
+		int goles = Integer.parseInt(entrada);
+		tablaEquipos.buscar(nombre).golesFavor += goles;
+	} else System.out.println("Este equipo no existe");
 }
 public void DarGolesContra() throws IOException
 {
-	
+	System.out.println("Nombre del equipo: ");
+	String nombre = br.readLine();
+	if(tablaEquipos.buscar(nombre) != null) //Esto no lo tengo muy claro
+	{
+		System.out.println("\nCantidad de goles en contra: ");
+		String entrada = br.readLine();
+		int goles = Integer.parseInt(entrada);
+		tablaEquipos.buscar(nombre).golesContra += goles;
+	} else System.out.println("Este equipo no existe");
 }
 public void VerPuntuaciones() throws IOException
 {
