@@ -65,7 +65,6 @@ public class TablaDispersa {
 	
 	public Equipo buscar(String clave)
 	{	
-		
 		int posicion=hash(clave);
 		Equipo pr=tabla[posicion];
 		return pr;
@@ -78,4 +77,15 @@ public class TablaDispersa {
 		tabla[posicion].esAlta=false;
 		
 	}
+	
+	public Equipo[] obtenerEquipos() {
+        Equipo[] equipos = new Equipo[numElementos];
+        int index = 0;
+        for (Equipo equipo : tabla) {
+            if (equipo != null) {
+                equipos[index++] = equipo;
+            }
+        }
+        return equipos;
+    }
 }

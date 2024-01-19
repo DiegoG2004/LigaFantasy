@@ -3,17 +3,24 @@ package classes;
 public class Equipo {
 	public int puntos, golesFavor, golesContra;
 	
-	public String Nombre;
-	public boolean UsadoEnJornada;
+	public String nombre;
+	public boolean usadoEnJornada;
 	public boolean esAlta;
 	
 	public Equipo(String nombre) {
-		Nombre = nombre;
+		this.nombre = nombre;
 		puntos = 0; golesFavor = 0; golesContra = 0;
-		UsadoEnJornada = false;
+		usadoEnJornada = false;
 		esAlta = true;
 	}
 	public String getCodigo() {
-		return Nombre;
+		return nombre;
 	}
+	public int getDiferenciaGoles() {
+        return golesFavor - golesContra;
+    }
+	public String toString() {
+        return "Nombre: " + nombre + ", Puntuación: " + puntos + ", Goles a favor: " + golesFavor
+                + ", Goles en contra: " + golesContra + ", Diferencia de goles: " + getDiferenciaGoles();
+    }
 }

@@ -140,6 +140,16 @@ public void darGolesContra()
 }
 public void verPuntuaciones() 
 {
-	
+	// Obtener los equipos en un array
+    Equipo[] equipos = tablaEquipos.obtenerEquipos();
+
+    // Llamar a shellSort para ordenar el array
+    ShellSort.shellSort(equipos);
+
+    // Imprimir el estado después de ordenar
+    for (Equipo equipo : equipos) {
+        System.out.println(equipo);
+    }
+
 }
 }
