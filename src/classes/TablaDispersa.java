@@ -2,7 +2,7 @@ package classes;
 
 public class TablaDispersa {
 
-	static final int TAMTABLA= 21;
+	static final int TAMTABLA= 27;
 	public int numElementos;
 	private double factorCarga;
 	private Equipo[] tabla;
