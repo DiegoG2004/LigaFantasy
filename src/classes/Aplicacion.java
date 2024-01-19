@@ -22,7 +22,13 @@ public void Menu()
 			+ "3. Dar goles a favor\n4. Dar goles en contra\n"
 			+ "5. Ver puntuaciones\n6. Salir");
 	System.out.println("\nEscribe el numero de la accion deseada: ");
-	int opcion = scanner.nextInt();
+	 int opcion;
+     try {
+         opcion = scanner.nextInt();
+     } catch (Exception ex) {
+         opcion = 0;  
+         scanner.nextLine();  
+     }
 	switch(opcion) 
 	{
 	case 1:
@@ -89,11 +95,22 @@ public void darPuntos()
     	System.out.println("\nEste equipo no existe.");
     }else{
     	System.out.println("\nCantidad de puntos (0, 1 o 3): ");
-        int puntos = scanner.nextInt();
+        int puntos;
+        try {
+            puntos = scanner.nextInt();
+        } catch (Exception ex) {
+            puntos = -1;
+            scanner.nextLine();
+        }
 
         while(puntos!=0&&puntos!=1&&puntos!=3) {
         	System.out.println("\nERROR: Introduce 0, 1 o 3. ");
-            puntos = scanner.nextInt();
+        	try {
+                puntos = scanner.nextInt();
+            } catch (Exception ex) {
+                puntos = -1;
+                scanner.nextLine();
+            }
         }
         tablaEquipos.buscar(nombre).puntos += puntos;
     } 
@@ -110,10 +127,21 @@ public void darGolesFavor()
     	System.out.println("\nEste equipo no existe.");
     }else{
 		System.out.println("\nCantidad de goles a favor (0-7): ");
-	    int goles = scanner.nextInt();
+	    int goles;
+	    try {
+            goles = scanner.nextInt();
+        } catch (Exception ex) {
+            goles = -1;
+            scanner.nextLine();
+        }
 	    while(goles<0||goles>7) {
 	    	System.out.println("\nERROR: Introduce un numero del 0 al 7: ");
-            goles = scanner.nextInt();
+	    	try {
+	            goles = scanner.nextInt();
+	        } catch (Exception ex) {
+	            goles = -1;
+	            scanner.nextLine();
+	        }
 	    }
 		tablaEquipos.buscar(nombre).golesFavor += goles;
     }
@@ -130,10 +158,21 @@ public void darGolesContra()
     	System.out.println("\nEste equipo no existe.");
     }else{
 		System.out.println("\nCantidad de goles en contra (0-7): ");
-	    int goles = scanner.nextInt();
+	    int goles;
+	    try {
+            goles = scanner.nextInt();
+        } catch (Exception ex) {
+            goles = -1;
+            scanner.nextLine();
+        }
 	    while(goles<0||goles>7) {
 	    	System.out.println("\nERROR: Introduce un numero del 0 al 7: ");
-            goles = scanner.nextInt();
+	    	try {
+	            goles = scanner.nextInt();
+	        } catch (Exception ex) {
+	            goles = -1;
+	            scanner.nextLine();
+	        }
 	    }
 		tablaEquipos.buscar(nombre).golesContra += goles;
     }

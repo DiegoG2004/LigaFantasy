@@ -20,7 +20,6 @@ public class Equipo {
         return golesFavor - golesContra;
     }
 	public String toString() {
-        return "Nombre: " + nombre + ", Puntuación: " + puntos + ", Goles a favor: " + golesFavor
-                + ", Goles en contra: " + golesContra + ", Diferencia de goles: " + getDiferenciaGoles();
+        return "Nombre: " + nombre + ", Puntuación: " + puntos + ", Diferencia de goles: " + getDiferenciaGoles();
     }
 }
