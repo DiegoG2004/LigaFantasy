@@ -2,20 +2,15 @@ package classes;
 
 import java.util.Scanner;
 
-//import java.io.BufferedReader;
-//import java.io.InputStreamReader;
 
 public class Aplicacion 
 {    
 	private Scanner scanner;
-	//BufferedReader br;
 	TablaDispersa tablaEquipos;
 	public Aplicacion() 
 	{ 
 		tablaEquipos = new TablaDispersa();
         scanner = new Scanner(System.in);
-
-		//br = new BufferedReader(new InputStreamReader(System.in));
 	}
 
 public void Menu() 
@@ -23,11 +18,10 @@ public void Menu()
 	boolean salir = false;
 	do 
 	{
-	System.out.println("1. Crear equipo\n2. Dar puntos a equipo\n"
+	System.out.println("\n\n1. Crear equipo\n2. Dar puntos a equipo\n"
 			+ "3. Dar goles a favor\n4. Dar goles en contra\n"
 			+ "5. Ver puntuaciones\n6. Salir");
-	System.out.println("Escribe el numero de la accion deseada: ");
-	//int opcion = br.read();
+	System.out.println("\nEscribe el numero de la accion deseada: ");
 	int opcion = scanner.nextInt();
 	switch(opcion) 
 	{
@@ -57,11 +51,11 @@ public void Menu()
 	case 6:
 		{
 		salir = true;
-		System.out.println("Saliendo del sistema...");
+		System.out.println("\nSaliendo del sistema...");
 		break;
 		}
 	default:
-		System.out.println("Opcion no valida");
+		System.out.println("\nOpcion no valida");
 		break;
 	}	
 	}while(salir == false);
@@ -71,72 +65,78 @@ public void crearEquipo()
 {
 	if(tablaEquipos.numElementos < 21) 
 	{
-		System.out.println("Nombre del equipo: ");
-		//String nombre = br.readLine();
+		System.out.println("\nNombre del equipo: ");
+		scanner.nextLine();
         String nombre = scanner.nextLine();
-		tablaEquipos.insertar(new Equipo(nombre));
+        if(tablaEquipos.buscar(nombre) != null) {
+        	System.out.println("\nEste equipo ya existe.");
+        }else{
+        	tablaEquipos.insertar(new Equipo(nombre));
+        	System.out.println("\nEquipo nuevo guardado.");
+        }
+		
 	} 
-	else System.out.println("Hay demasiados equipos");
+	else System.out.println("\nHay demasiados equipos");
 }
+
 public void darPuntos() 
 {
-	System.out.println("Nombre del equipo: ");
-	//String nombre = br.readLine();
+	System.out.println("\nNombre del equipo: ");
+	scanner.nextLine();
     String nombre = scanner.nextLine();
-	System.out.println("\nCantidad de puntos (0, 1 o 3): ");
-	//String entrada = br.readLine();
-    int puntos = scanner.nextInt();
+    if(tablaEquipos.buscar(nombre) == null)
+    {
+    	System.out.println("\nEste equipo no existe.");
+    }else{
+    	System.out.println("\nCantidad de puntos (0, 1 o 3): ");
+        int puntos = scanner.nextInt();
 
-	//int puntos = Integer.parseInt(entrada);
-	//if(tablaEquipos.buscar(nombre).puntos += puntos <=3)
-    while(puntos!=0&&puntos!=1&&puntos!=3) {
-    	System.out.println("\nERROR: Introduce 0, 1 o 3. ");
-        puntos = scanner.nextInt();
-    }
-    if (tablaEquipos.buscar(nombre) != null) {
-		tablaEquipos.buscar(nombre).puntos += puntos;
-    } else {
-        System.out.println("Este equipo no existe");
-    }
-    
-    //else System.out.println("Este equipo tiene demasiados puntos");
+        while(puntos!=0&&puntos!=1&&puntos!=3) {
+        	System.out.println("\nERROR: Introduce 0, 1 o 3. ");
+            puntos = scanner.nextInt();
+        }
+        tablaEquipos.buscar(nombre).puntos += puntos;
+    } 
 }
+
 public void darGolesFavor() 
 {
-	System.out.println("Nombre del equipo: ");
+	System.out.println("\nNombre del equipo: ");
+	scanner.nextLine();
     String nombre = scanner.nextLine();
     
-    while(tablaEquipos.buscar(nombre) == null){
-    	System.out.println("Este equipo no existe. Introduzca de nuevo el nombre del equipo: ");
-        nombre = scanner.nextLine();
+    if(tablaEquipos.buscar(nombre) == null)
+    {
+    	System.out.println("\nEste equipo no existe.");
+    }else{
+		System.out.println("\nCantidad de goles a favor (0-7): ");
+	    int goles = scanner.nextInt();
+	    while(goles<0||goles>7) {
+	    	System.out.println("\nERROR: Introduce un numero del 0 al 7: ");
+            goles = scanner.nextInt();
+	    }
+		tablaEquipos.buscar(nombre).golesFavor += goles;
     }
-	System.out.println("\nCantidad de goles a favor: ");
-		//String entrada = br.readLine();
-		//int goles = Integer.parseInt(entrada);
-    int goles = scanner.nextInt();
-	tablaEquipos.buscar(nombre).golesFavor += goles;
 }
 
 public void darGolesContra() 
 {
-	System.out.println("Nombre del equipo: ");
+	System.out.println("\nNombre del equipo: ");
+	scanner.nextLine();
     String nombre = scanner.nextLine();
     
-    while(tablaEquipos.buscar(nombre) == null){
-    	System.out.println("Este equipo no existe. Introduzca de nuevo el nombre del equipo: ");
-        nombre = scanner.nextLine();
-    }
-	System.out.println("\nCantidad de goles en contra: ");
-    int goles = scanner.nextInt();
-	tablaEquipos.buscar(nombre).golesContra += goles;
-	
-	/*if(tablaEquipos.buscar(nombre) != null) //Esto no lo tengo muy claro
-	{
-		System.out.println("\nCantidad de goles en contra: ");
-		String entrada = br.readLine();
-		int goles = Integer.parseInt(entrada);
+    if(tablaEquipos.buscar(nombre) == null)
+    {
+    	System.out.println("\nEste equipo no existe.");
+    }else{
+		System.out.println("\nCantidad de goles en contra (0-7): ");
+	    int goles = scanner.nextInt();
+	    while(goles<0||goles>7) {
+	    	System.out.println("\nERROR: Introduce un numero del 0 al 7: ");
+            goles = scanner.nextInt();
+	    }
 		tablaEquipos.buscar(nombre).golesContra += goles;
-	} else System.out.println("Este equipo no existe");*/
+    }
 }
 public void verPuntuaciones() 
 {
